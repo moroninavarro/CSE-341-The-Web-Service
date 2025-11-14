@@ -24,6 +24,21 @@ content-type: application/json
 
 
 
+### PUT CONTACT/ UPDATE/ Actualizar un array
+PUT http://localhost:3000/songs/6917a7f6f4f1449d36126011 HTTP/1.1
+content-type: application/json
+
+{
+    "NameSong": "Yano es el valiente",
+    "Author": "Actualizacion",
+    "duration": "3:51",
+    "releaseDate": "Desconocido",
+    "genre": "Desconocido",
+    "language": "Spanish",
+    "album": "Desconocido"
+  }
+
+
 
 ### DELETE Contact
 DELETE http://localhost:3000/songs/6917a2a88dd6a0fde515f38a

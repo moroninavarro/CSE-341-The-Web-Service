@@ -1,0 +1,19 @@
+{
+  "name": "cse-341-the-web-service",
+  "version": "1.0.0",
+  "description": "My second project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moroninavarro/CSE-341-The-Web-Service.git"
+  },
+  "author": "Moroni Alanis Navarro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moroninavarro/CSE-341-The-Web-Service/issues"
+  },
+  "homepage": "https://github.com/moroninavarro/CSE-341-The-Web-Service#readme"
+}

@@ -6,6 +6,6 @@ router.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-router.use('/Contacts', require('./Contacts'));
+router.use('/songs', require('./songs'));
 
 module.exports = router;

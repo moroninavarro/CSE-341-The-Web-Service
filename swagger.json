@@ -34,7 +34,7 @@
     "/songs/": {
       "get": {
         "tags": [
-          "Contacts"
+          "Songs"
         ],
         "description": "",
         "produces": [
@@ -48,7 +48,7 @@
       },
       "post": {
         "tags": [
-          "Contacts"
+          "Songs"
         ],
         "description": "",
         "parameters": [
@@ -99,7 +99,7 @@
     "/songs/{id}": {
       "get": {
         "tags": [
-          "Contacts"
+          "Songs"
         ],
         "description": "",
         "produces": [
@@ -124,7 +124,7 @@
       },
       "put": {
         "tags": [
-          "Contacts"
+          "Songs"
         ],
         "description": "",
         "parameters": [
@@ -182,7 +182,7 @@
       },
       "delete": {
         "tags": [
-          "Contacts"
+          "Songs"
         ],
         "description": "",
         "parameters": [
@@ -209,7 +209,7 @@
     "/books/": {
       "get": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "produces": [
@@ -223,7 +223,7 @@
       },
       "post": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "parameters": [
@@ -262,7 +262,7 @@
     "/books/{id}": {
       "get": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "produces": [
@@ -287,7 +287,7 @@
       },
       "put": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "parameters": [
@@ -333,7 +333,7 @@
       },
       "delete": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "parameters": [

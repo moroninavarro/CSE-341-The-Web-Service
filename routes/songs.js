@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const songsController = require('../controllers/songs');
+const validation = require('../middleware/validate');
 
 router.get('/', songsController.getAll);
 

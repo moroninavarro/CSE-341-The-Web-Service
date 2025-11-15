@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const booksController = require('../controllers/books');
-const validation = require('../middleware/validate');
+const validation = require('../middleware/validacion');
 
 router.get('/', booksController.getAll);
 
 router.get('/:id', booksController.getSingle);
 
-router.post('/', validation.saveSong, booksController.createSongs);
+router.post('/', validation.saveBooks, booksController.createBooks);
 
-router.put('/:id', validation.saveSong, booksController.updateSongs);
+router.put('/:id', validation.saveBooks, booksController.updateBooks);
 
-router.delete('/:id', booksController.deleteSongs);
+router.delete('/:id', booksController.deleteBooks);
 
 module.exports = router;

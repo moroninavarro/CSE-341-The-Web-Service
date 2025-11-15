@@ -27,7 +27,7 @@ const getSingle = async(req, res) => {
 const createBooks = async(req, res) => {
     //#swagger.tags=['Contacts']
     const book = {
-        NameBook: req.body.NameSong, 
+        NameBook: req.body.NameBook, 
         Author: req.body.Author, 
         Pages: req.body.Pages 
     };
@@ -46,7 +46,7 @@ const updateBooks = async(req, res) => {
   }
     const bookId = new ObjectId(req.params.id);
     const book = {
-        NameBook: req.body.NameSong, 
+        NameBook: req.body.NameBook, 
         Author: req.body.Author, 
         Pages: req.body.Pages 
     };

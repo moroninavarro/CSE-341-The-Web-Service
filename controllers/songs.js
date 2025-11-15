@@ -39,7 +39,7 @@ const createSongs = async(req, res) => {
     if (response.aknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error ocurred while creating the song.');
+        res.status(500).json(response.error);
     }
 };
 

@@ -8,9 +8,9 @@ router.get('/', songsController.getAll);
 
 router.get('/:id', songsController.getSingle);
 
-router.post('/', songsController.createSongs);
+router.post('/', validation.saveSong, songsController.createSongs);
 
-router.put('/:id', songsController.updateSongs);
+router.put('/:id', validation.saveSong, songsController.updateSongs);
 
 router.delete('/:id', songsController.deleteSongs);
 

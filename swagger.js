@@ -5,8 +5,8 @@ const doc = {
     title: 'My API',
     description: 'Temple API'
   },
-  host: 'localhost:3000',
-  schemes: ['http'],
+  host: 'cse-341-the-web-service-1.onrender.com',
+  schemes: ['https'],
   basePath: "/",
   consumes: ["application/json"],
   produces: ["application/json"],

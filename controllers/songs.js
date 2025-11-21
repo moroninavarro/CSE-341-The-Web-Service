@@ -12,15 +12,23 @@ const getAll = async(req, res) => {
 
 const getSingle = async(req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid song id to update a song.');
-  }
+    // res.status(400).json('Must use a valid song id to update a song.');
+  
     //#swagger.tags=['Contacts']
     const songId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('songs').find({_id: songId});
-    result.toArray().then((songs) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(songs[0]);
-    });
+    try{
+        result.toArray().then((songs) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(songs[0]);
+        });
+
+    } catch (err) {
+        res.status(400).json({ message: err});
+    }
+} else {
+    res.status(400).json("Invalid ID entered. Please try again.");
+}
 };
 
 
@@ -35,12 +43,17 @@ const createSongs = async(req, res) => {
         language: req.body.language, 
         album: req.body.album
     };
-    const response = await mongodb.getDatabase().db().collection('songs').insertOne(song);
-    if (response.aknowledged) {
-        res.status(204).send();
-    } else {
-        res.status(500).json(response.error);
-    }
+
+    try{
+        const response = await mongodb.getDatabase().db().collection('songs').insertOne(song);
+        if (response.aknowledged) {
+            res.status(204).send();
+        } 
+
+    } catch (error) {
+            res.status(500).json(response.error);
+            res.json(response.errored || "An error ocurred. Please try again.");
+        }
 };
 
 const updateSongs = async(req, res) => {

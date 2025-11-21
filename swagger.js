@@ -5,8 +5,26 @@ const doc = {
     title: 'My API',
     description: 'Temple API'
   },
-  host: 'cse-341-the-web-service-1.onrender.com',
-  schemes: ['https']
+  host: 'localhost:3000',
+  schemes: ['http'],
+  basePath: "/",
+  consumes: ["application/json"],
+  produces: ["application/json"],
+
+  components: {
+    securitySchemes: {
+      cookieAuth: {
+        type: "apiKey",
+        in: "cookie",
+        name: "connect.sid"
+      }
+    }
+  },
+  security: [
+    {
+      cookieAuth: []
+    }
+  ]
 };
 
 const outputFile = './swagger.json';

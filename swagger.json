@@ -1,22 +1,38 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
+    "title": "SONGS AND BOOKS API",
     "description": "Temple API",
     "version": "1.0.0"
   },
-  "host": "cse-341-the-web-service-1.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
   ],
   "paths": {
-    "/": {
+    "/login": {
       "get": {
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
@@ -34,7 +50,7 @@
     "/songs/": {
       "get": {
         "tags": [
-          "Songs"
+          "SONGS"
         ],
         "description": "",
         "produces": [
@@ -48,7 +64,7 @@
       },
       "post": {
         "tags": [
-          "Songs"
+          "SONGS"
         ],
         "description": "",
         "parameters": [
@@ -87,8 +103,8 @@
           "204": {
             "description": "No Content"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -99,7 +115,7 @@
     "/songs/{id}": {
       "get": {
         "tags": [
-          "Songs"
+          "SONGS"
         ],
         "description": "",
         "produces": [
@@ -124,7 +140,7 @@
       },
       "put": {
         "tags": [
-          "Songs"
+          "SONGS"
         ],
         "description": "",
         "parameters": [
@@ -172,8 +188,8 @@
           "400": {
             "description": "Bad Request"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -182,7 +198,7 @@
       },
       "delete": {
         "tags": [
-          "Songs"
+          "SONGS"
         ],
         "description": "",
         "parameters": [
@@ -200,6 +216,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -209,7 +228,7 @@
     "/books/": {
       "get": {
         "tags": [
-          "Books"
+          "BOOKS"
         ],
         "description": "",
         "produces": [
@@ -223,7 +242,7 @@
       },
       "post": {
         "tags": [
-          "Books"
+          "BOOKS"
         ],
         "description": "",
         "parameters": [
@@ -250,8 +269,8 @@
           "204": {
             "description": "No Content"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -262,7 +281,7 @@
     "/books/{id}": {
       "get": {
         "tags": [
-          "Books"
+          "BOOKS"
         ],
         "description": "",
         "produces": [
@@ -287,7 +306,7 @@
       },
       "put": {
         "tags": [
-          "Books"
+          "BOOKS"
         ],
         "description": "",
         "parameters": [
@@ -323,8 +342,8 @@
           "400": {
             "description": "Bad Request"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -333,7 +352,7 @@
       },
       "delete": {
         "tags": [
-          "Books"
+          "BOOKS"
         ],
         "description": "",
         "parameters": [
@@ -351,11 +370,28 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     }
-  }
+  },
+  "components": {
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "connect.sid"
+      }
+    }
+  },
+  "security": [
+    {
+      "cookieAuth": []
+    }
+  ]
 }

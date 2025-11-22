@@ -4,10 +4,16 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async(req, res) => {
     //#swagger.tags=['Contacts']
     const result = await mongodb.getDatabase().db().collection('songs').find();
-    result.toArray().then((songs) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(songs);
-    });
+
+    try{
+        result.toArray().then((songs) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(songs);
+        });
+
+    } catch (err) {
+        res.status(400).json({ message: err});
+    }
 };
 
 const getSingle = async(req, res) => {
@@ -60,7 +66,7 @@ const updateSongs = async(req, res) => {
     //#swagger.tags=['Contacts']
     if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid song id to update a song.');
-  }
+  
     const songId = new ObjectId(req.params.id);
     const song = {
         NameSong: req.body.NameSong,  
@@ -71,9 +77,16 @@ const updateSongs = async(req, res) => {
         language: req.body.language, 
         album: req.body.album
     };
-     const response = await mongodb.getDatabase().db().collection('songs').replaceOne({_id:songId }, song);
-    if (response.modifiedCount > 0) {
-        res.status(204).send();
+
+    try{
+        const response = await mongodb.getDatabase().db().collection('songs').replaceOne({_id:songId }, song);
+       if (response.modifiedCount > 0) {
+           res.status(204).send();
+       } 
+
+        } catch (err) {
+            res.status(400).json({ message: err});
+            }
     } else {
         res.status(500).json(response.error || 'Some error ocurred while updating the song.');
     }
@@ -84,11 +97,17 @@ const deleteSongs = async (req, res) => {
     //#swagger.tags=['Contacts']
     if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid song id to delete a song.');
-  }
+  
     const songId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('songs').deleteOne({_id:songId });
-    if (response.deletedCount > 0) {
-        res.status(204).send();
+
+    try{
+        if (response.deletedCount > 0) {
+            res.status(204).send();} 
+            
+        }   catch (err) {
+        res.status(400).json({ message: err});
+    }
     } else {
         res.status(500).json(response.error || 'Some error ocurred while updating the song.');
     }
